@@ -1,0 +1,8 @@
+requests_oauthlib
+openai
+python-dotenv
+requests
+streamlit
+schedule
+json
+re
