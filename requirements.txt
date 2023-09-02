@@ -4,5 +4,3 @@ python-dotenv
 requests
 streamlit
 schedule
-json
-re
