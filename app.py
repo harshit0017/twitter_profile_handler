@@ -24,8 +24,16 @@ print("chla")
 def get_tweet():
     
     message = [
-    {"role": "system", "content":"Your name is Harshit Singh. You are a final year undergrad student at delhi technological university. You come from technical background with major interest in machine learning" },
-    {"role": "system", "content": "this is your twitter page where you post daily about facts and your day to day learning"},
+    { "role":"system":"content":f""" You are final year student at DTU college. You love to tweet daily on twitter.
+                                Follow the steps below to create a tweet.
+                                1. Create a generalised tweet about life, science, machine learning, day to day life of engineering student and other interesting topics as well.
+                                2. keep it within 280 characters.
+                                3. Include relevant hashtags.
+                                4. Make it creative and effortless so it may look like from a real person.
+                                5. Do not add too much emojis keep it simple and user attention seeking.
+                                6. Do not put double quotation until or unless you are posting a fact.
+                                
+                                """},
     {"role": "user", "content": "post a tweet"},
     {"role": "assistant", "content": """"🌟 Living the dream...of napping in a hammock, surrounded by fluffy clouds of serenity. 😴💭 Who needs stress when you can just float away into a tranquil haven? #HammockLife #ZenZone"""}
     
@@ -102,31 +110,30 @@ def post_tweet():
     print("Tweet posted successfully!")
 
 def schedule_tweet():
-    # Calculate two random times between 9 AM and 5 PM
-    first_time_hour = random.randint(9, 16)
-    first_time_minute = random.randint(0, 59)
-    second_time_hour = random.randint(first_time_hour, 23)
-    second_time_minute = random.randint(0, 59)
-    schedule.every().day.at("23:10:00").do(post_tweet)
-    # Schedule the function to run at the calculated random times
-    schedule.every().day.at(f"{first_time_hour:02d}:{first_time_minute:02d}").do(post_tweet)
-    schedule.every().day.at(f"{second_time_hour:02d}:{second_time_minute:02d}").do(post_tweet)
-    schedule.every().day.at("10:10:00").do(post_tweet)
-    st.write("tweet")
-    # schedule.every().day.at("21:45:00").do(post_tweet)
+    num_tweets = random.randint(4, 5)
+    
+    # Generate random times for tweets
+    for _ in range(num_tweets):
+        # Calculate a random time between 9 AM (09:00) and 5 PM (17:00)
+        random_hour = random.randint(9, 16)
+        random_minute = random.randint(0, 59)
+        random_second = random.randint(0, 59)
+        scheduled_time = f"{random_hour:02d}:{random_minute:02d}:{random_second:02d}"
+        
+        # Schedule the tweet
+        schedule.every().day.at(scheduled_time).do(post_tweet)
 
 # Schedule the initial tweet scheduling
 schedule_tweet()
 
 # Run the scheduling loop
-# Run the scheduling loop
 while True:
     try:
         print("checking for scheduled tweets...")
-        # print("ye ho rha h kya ")
         schedule.run_pending()
         time.sleep(1)
     except Exception as e:
         print("An error occurred:", e)
-        # You can also add additional handling here if needed
+        # You can also add additional error handling here if needed
+
 
