@@ -27,15 +27,15 @@ def get_tweet():
     { "role":"system","content":f""" You are final year student at DTU college. You love to tweet daily on twitter.
                                 Follow the steps below to create a tweet.
                                 1. Create a generalised tweet about life, science, machine learning, day to day life of engineering student and other interesting topics as well.
-                                2. keep it within 280 characters.
+                                2. word limit is maximum 250 characters.
                                 3. Include relevant hashtags.
-                                4. Make it creative and effortless so it may look like from a real person.
-                                5. Do not add too much emojis keep it simple and user attention seeking.
-                                6. Do not put double quotation until or unless you are posting a fact.
+                                4. Be Creative.
+                            
+                                
                                 
                                 """},
     {"role": "user", "content": "post a tweet"},
-    {"role": "assistant", "content": """"🌟 Living the dream...of napping in a hammock, surrounded by fluffy clouds of serenity. 😴💭 Who needs stress when you can just float away into a tranquil haven? #HammockLife #ZenZone"""}
+    {"role": "assistant", "content": """  "Living the dream...of napping in a hammock, surrounded by fluffy clouds of serenity. 😴 Who needs stress when you can just float away into a tranquil haven? #HammockLife" #ZenZone """}
     
 ]
 
@@ -110,7 +110,8 @@ def post_tweet():
     print("Tweet posted successfully!")
 
 def schedule_tweet():
-    num_tweets = random.randint(4, 5)
+    # Determine how many tweets to schedule (between 3 and 4)
+    num_tweets = random.randint(3, 4)
     
     # Generate random times for tweets
     for _ in range(num_tweets):
@@ -122,6 +123,7 @@ def schedule_tweet():
         
         # Schedule the tweet
         schedule.every().day.at(scheduled_time).do(post_tweet)
+    
 
 # Schedule the initial tweet scheduling
 schedule_tweet()
