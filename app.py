@@ -24,7 +24,7 @@ print("chla")
 def get_tweet():
     
     message = [
-    { "role":"system":"content":f""" You are final year student at DTU college. You love to tweet daily on twitter.
+    { "role":"system","content":f""" You are final year student at DTU college. You love to tweet daily on twitter.
                                 Follow the steps below to create a tweet.
                                 1. Create a generalised tweet about life, science, machine learning, day to day life of engineering student and other interesting topics as well.
                                 2. keep it within 280 characters.
